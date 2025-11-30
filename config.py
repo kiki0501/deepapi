@@ -146,7 +146,7 @@ class Config:
     @property
     def port(self) -> int:
         """服务器端口"""
-        return self._config.get("system", {}).get("port", 8000)
+        return self._config.get("system", {}).get("port", 7860)
     
     @property
     def log_level(self) -> str:

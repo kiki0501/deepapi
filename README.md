@@ -35,7 +35,7 @@ cp config.yaml.example config.yaml
 system:
   key: "your-api-key-here"  # API 访问密钥
   host: "0.0.0.0"
-  port: 8000
+  port: 7860
 
 provider:
   openai:
@@ -82,7 +82,7 @@ docker-compose down
 # 使用GitHub镜像直接运行（支持多架构，Docker会自动选择合适的架构）
 docker run -d \
   --name deepapi \
-  -p 8000:8000 \
+  -p 7860:7860 \
   -v $(pwd)/config.yaml:/app/config.yaml:ro \
   ghcr.io/zhongruan0522/deepapi:latest
 
@@ -90,7 +90,7 @@ docker run -d \
 docker build -t deepapi .
 docker run -d \
   --name deepapi \
-  -p 8000:8000 \
+  -p 7860:7860 \
   -v $(pwd)/config.yaml:/app/config.yaml:ro \
   deepapi
 ```
@@ -117,12 +117,20 @@ docker ps --format "table {{.Names}}\t{{.Status}}"
 3. 配置日志收集
 4. 使用HTTPS和适当的认证
 
+#### 部署到 Hugging Face Spaces
+
+1. 创建一个新的 Space，SDK 选择 **Docker**。
+2. 将代码上传到 Space。
+3. 在 Space 的 Settings -> Variables and secrets 中添加环境变量（如果不想将 config.yaml 放入代码库）：
+   - 也可以直接修改 `config.yaml` 并上传。
+   - 注意：Hugging Face Spaces 默认端口为 **7860**，本项目已配置为默认使用此端口。
+
 ## API 使用
 
 ### 聊天补全
 
 ```bash
-curl http://localhost:8000/v1/chat/completions \
+curl http://localhost:7860/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer your-api-key" \
   -d '{
@@ -137,7 +145,7 @@ curl http://localhost:8000/v1/chat/completions \
 ### 列出模型
 
 ```bash
-curl http://localhost:8000/v1/models \
+curl http://localhost:7860/v1/models \
   -H "Authorization: Bearer your-api-key"
 ```
 
@@ -147,7 +155,7 @@ curl http://localhost:8000/v1/models \
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="http://localhost:8000/v1",
+    base_url="http://localhost:7860/v1",
     api_key="your-api-key"
 )
 
