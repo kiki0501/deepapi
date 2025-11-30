@@ -17,7 +17,7 @@ provider:
   # OpenAI 兼容的提供商
   openai:
     base_url: "https://yuki.zeabur.app/v1"
-    key: "sk-fcu38xPwE96y0QtvLQrs9qMc3VcRp1IS5aYBiZuhTqVmashg"
+    key: "sk-gOfrI8Y9EGnDJka9kfFAbVIVzV9V2vzPaCgky5skU7M2iAXT"
     # 是否使用 response API (流式)
     response_api: false
 
@@ -31,7 +31,7 @@ provider:
   # Gemini 提供商(使用 OpenAI 兼容接口)
   gemini:
     base_url: "https://yuki.zeabur.app/v1"
-    key: "sk-fcu38xPwE96y0QtvLQrs9qMc3VcRp1IS5aYBiZuhTqVmashg"
+    key: "sk-gOfrI8Y9EGnDJka9kfFAbVIVzV9V2vzPaCgky5skU7M2iAXT"
     response_api: false
 
 # 向外导出的模型列表 (通过 /v1/models 访问)
@@ -94,5 +94,20 @@ model:
       agent_thinking: gpt-4o            # UltraThink: Agent思考阶段
       synthesis: gpt-4o                 # UltraThink: 综合阶段
       summary: gpt-4o                   # 总结阶段
+  # Gemini 3 Pro Preview - 新模型
+  gemini-3-pro-preview:
+    name: "Gemini 3 Pro Preview"
+    provider: gemini
+    model: gemini-3-pro-preview
+    level: deepthink
+    rpm: 20
+    max_iterations: 20
+    required_verifications: 2
+    max_retry: 3
+    feature:
+      vision: true
+      summary_think: true
+      plan_mode: true
+
 
 
