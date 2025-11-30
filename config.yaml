@@ -16,8 +16,8 @@ system:
 provider:
   # OpenAI 兼容的提供商
   openai:
-    base_url: "https://api.openai.com/v1"
-    key: "sk-xxx"
+    base_url: "https://yuki.zeabur.app/v1"
+    key: "sk-fcu38xPwE96y0QtvLQrs9qMc3VcRp1IS5aYBiZuhTqVmashg"
     # 是否使用 response API (流式)
     response_api: false
 
@@ -88,5 +88,6 @@ model:
       agent_thinking: gpt-4o            # UltraThink: Agent思考阶段
       synthesis: gpt-4o                 # UltraThink: 综合阶段
       summary: gpt-4o                   # 总结阶段
+
 
 
