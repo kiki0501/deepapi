@@ -94,11 +94,11 @@ model:
       agent_thinking: gpt-4o            # UltraThink: Agent思考阶段
       synthesis: gpt-4o                 # UltraThink: 综合阶段
       summary: gpt-4o                   # 总结阶段
-  # Gemini 2.5 Flash Preview DeepThink 模型
-  gemini-2.5-flash-preview-deepthink:
-    name: "Gemini 2.5 Flash Preview DeepThink"
+  # Gemini 2.5 Flash DeepThink 模型
+  gemini-2.5-flash-deepthink:
+    name: "Gemini 2.5 Flash DeepThink"
     provider: gemini
-    model: gemini-2.5-flash-preview
+    model: gemini-2.5-flash
     level: deepthink
     rpm: 10
     max_iterations: 30
@@ -112,11 +112,12 @@ model:
     
     # 分阶段模型配置 (可选,不写则全部使用主模型)
     models:
-      initial: gemini-2.5-flash-preview
-      improvement: gemini-2.5-flash-preview
-      verification: gemini-2.5-flash-preview
-      correction: gemini-2.5-flash-preview
-      summary: gemini-2.5-flash-preview
+      initial: gemini-2.5-flash
+      improvement: gemini-2.5-flash
+      verification: gemini-2.5-flash
+      correction: gemini-2.5-flash
+      summary: gemini-2.5-flash
+
 
 
 
